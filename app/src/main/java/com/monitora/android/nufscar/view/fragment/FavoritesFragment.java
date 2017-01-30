@@ -1,6 +1,7 @@
 package com.monitora.android.nufscar.view.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 
 import com.monitora.android.nufscar.R;
 import com.monitora.android.nufscar.model.News;
+import com.monitora.android.nufscar.view.NewsDetailsActivity;
 import com.monitora.android.nufscar.view.adapter.ListAdapter;
 
 import java.io.FileInputStream;
@@ -18,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vdour on 26/01/2017.
@@ -32,7 +35,7 @@ public class FavoritesFragment extends Fragment implements AdapterView.OnItemCli
 //    public static final String KEY_AUTOR = "autor";
 //    public static final String KEY_DATA = "data";
 //    public static final String KEY_FIGCAPTION = "figcapion";
-//    public static final String KEY_IDNOTICIA = "idNoticia";
+    public static final String KEY_IDNOTICIA = "idNoticia";
 //    public static final String KEY_IMG = "image_src";
 //    public static final String KEY_TEXTO = "texto";
 //    public static final String KEY_TITULO = "titulo";
@@ -66,6 +69,17 @@ public class FavoritesFragment extends Fragment implements AdapterView.OnItemCli
         ListAdapter listAdapter = new ListAdapter(this.mAndroidMapList);
         newsFeedListView.setAdapter(listAdapter);
 
+
+
+        //########################
+        onLoaded(mAndroidMapList);
+
+
+
+        //####################
+
+
+
         return this.newsFeedView;
     }
 
@@ -94,7 +108,65 @@ public class FavoritesFragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
     }
+
+//    @Override
+    public void onLoaded(List<News> androidList) {
+//        for (News android : androidList) {
+//
+//
+//            mAndroidMapList.add(android);
+//        }
+
+        ListView listView = loadListView();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                News news = (News) parent.getItemAtPosition(position);
+                Intent intent = new Intent(view.getContext(), NewsDetailsActivity.class);
+                intent.putExtra(KEY_IDNOTICIA,news);
+                startActivity(intent);
+
+
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //    public void onLoaded(List<News> androidList) {

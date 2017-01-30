@@ -15,13 +15,13 @@
             android:icon="@android:drawable/btn_star"
             android:title="Favoritos" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@android:drawable/ic_menu_today"
-            android:title="Calendario" />
+            android:id="@+id/nav_sair"
+            android:icon="@android:drawable/ic_lock_idle_lock"
+            android:title="Sair" />
 
         <item
-            android:id="@+id/nav_share"
-            android:icon="?android:attr/fingerprintAuthDrawable"
+            android:id="@+id/nav_sobre"
+            android:icon="@android:drawable/ic_menu_agenda"
             android:title="Sobre"
             />
 
