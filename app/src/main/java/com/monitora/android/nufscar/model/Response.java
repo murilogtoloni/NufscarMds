@@ -12,7 +12,6 @@ public class Response {
     private List<News> news = new ArrayList<News>();
     private List<Eventos> events = new ArrayList<Eventos>();
 
-
     public List<News> getAndroid() {
         return news;
     }

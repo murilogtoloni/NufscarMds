@@ -57,10 +57,10 @@
 
 
         <Button
-            android:id="@+id/events_details_radio"
+            android:id="@+id/adicionar_favoritos"
             android:text="Adicionar nos favoritos"
             android:checked="true"
-            android:layout_below="@id/events_details_text"
+            android:layout_below="@id/news_details_text"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

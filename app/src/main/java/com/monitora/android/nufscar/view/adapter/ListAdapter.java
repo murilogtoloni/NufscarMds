@@ -8,9 +8,7 @@ import android.widget.TextView;
 
 import com.monitora.android.nufscar.R;
 import com.monitora.android.nufscar.model.News;
-import com.monitora.android.nufscar.view.fragment.NewsFeedFragment;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**

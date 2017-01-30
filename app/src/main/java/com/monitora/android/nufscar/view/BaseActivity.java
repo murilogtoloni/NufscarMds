@@ -13,10 +13,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.monitora.android.nufscar.R;
+import com.monitora.android.nufscar.model.News;
 import com.monitora.android.nufscar.view.fragment.EventsFragment;
+import com.monitora.android.nufscar.view.fragment.FavoritesFragment;
 import com.monitora.android.nufscar.view.fragment.NewsFeedFragment;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 
 public class BaseActivity extends AppCompatActivity
@@ -26,6 +36,8 @@ public class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -85,7 +97,7 @@ public class BaseActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+           // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -99,9 +111,9 @@ public class BaseActivity extends AppCompatActivity
                     .replace(R.id.content_frame, new EventsFragment())
                     .commit();
         } else if (id == R.id.nav_favorites) {
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.content_frame, new FavoritesFragment())
-//                    .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new FavoritesFragment())
+                    .commit();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

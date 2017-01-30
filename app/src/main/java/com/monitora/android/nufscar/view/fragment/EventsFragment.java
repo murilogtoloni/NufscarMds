@@ -84,7 +84,7 @@ public class EventsFragment  extends Fragment implements LoadJSONEventos.Listene
 
     private ListView loadListView() {
 
-        /*ListAdapter adapter = new SimpleAdapter(NewsFeedFragment.this, mAndroidMapList, R.layout.list_item,
+        /*ListAdapter adapter = new SimpleAdapter(FavoritesFragment.this, mAndroidMapList, R.layout.list_item,
                 new String[] {  KEY_TITULO, KEY_IMG, KEY_IDNOTICIA },
                 new int[] {R.id.version,R.id.name, R.id.api });*/
 
