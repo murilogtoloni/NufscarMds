@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NUFSCar</string>
+    <string name="search">Busca</string>
+    <string name="title_activity_base">NUFSCar</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_search">Search</string>
+    <string name="title_activity_favorites">FavoritesActivity</string>
+    <string name="title_activity_favorites_fragment">FavoritesFragment</string>
+</resources>
