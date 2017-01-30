@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class FavoritesFragment extends Fragment implements AdapterView.OnItemClickListener {
     private View newsFeedView;
-    ArrayList<News> mAndroidMapList;
+    ArrayList mAndroidMapList;
     String fileName = "FavoriteNews.bak";
 //    public static final String URL = "https://ufscar-monitora.firebaseio.com/.json";
 //
@@ -47,13 +47,13 @@ public class FavoritesFragment extends Fragment implements AdapterView.OnItemCli
 
 
         try {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                FileInputStream fileInputStream = getContext().openFileInput(fileName);
+            //if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                FileInputStream fileInputStream = getActivity().openFileInput(fileName);
                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
                 mAndroidMapList = (ArrayList) objectInputStream.readObject();
                 objectInputStream.close();
                 fileInputStream.close();
-            }
+            //}
         } catch (FileNotFoundException e) {
             mAndroidMapList = new ArrayList<News>();
         } catch (ClassNotFoundException e) {

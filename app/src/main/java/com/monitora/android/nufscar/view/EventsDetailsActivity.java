@@ -80,5 +80,5 @@ public class EventsDetailsActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-    
+
 }

@@ -80,45 +80,45 @@ public class NewsDetailsActivity extends AppCompatActivity {
 //                                              RelativeLayout rl = (RelativeLayout) v.getParent();
 //                                              rl.findViewById()
 
-                                              /////////////////////////////////////
-                                              try {
-                                                  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                                                      FileInputStream fileInputStream = openFileInput(fileName);
-                                                      ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-                                                      mAndroidMapList = (ArrayList) objectInputStream.readObject();
-                                                      objectInputStream.close();
-                                                      fileInputStream.close();
+                    /////////////////////////////////////
+                    try {
+                        //if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                        FileInputStream fileInputStream = openFileInput(fileName);
+                        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                        mAndroidMapList = (ArrayList) objectInputStream.readObject();
+                        objectInputStream.close();
+                        fileInputStream.close();
 
-                                                      mAndroidMapList.indexOf(news);
-                                                      if (mAndroidMapList.indexOf(news) < 0) {
-                                                          mAndroidMapList.add(news);
+                        mAndroidMapList.indexOf(news);
+                        if (mAndroidMapList.indexOf(news) < 0) {
+                            mAndroidMapList.add(news);
 
-                                                          FileOutputStream fileOutputStream = openFileOutput(fileName, MODE_PRIVATE);
-                                                          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                                                          objectOutputStream.writeObject(mAndroidMapList);
-                                                          fileOutputStream.close();
-                                                          objectOutputStream.close();
-                                                      }
-                                                  }
-                                              } catch (FileNotFoundException e) {
-                                                  mAndroidMapList = new ArrayList<News>();
-                                                  mAndroidMapList.add(news);
+                            FileOutputStream fileOutputStream = openFileOutput(fileName, MODE_PRIVATE);
+                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                            objectOutputStream.writeObject(mAndroidMapList);
+                            fileOutputStream.close();
+                            objectOutputStream.close();
+                        }
+                        // }
+                    } catch (FileNotFoundException e) {
+                        mAndroidMapList = new ArrayList<News>();
+                        mAndroidMapList.add(news);
 
-                                                  FileOutputStream fileOutputStream = null;
-                                                  if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                                                      try {
-                                                          fileOutputStream = openFileOutput(fileName, MODE_PRIVATE);
-                                                          ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                                                          objectOutputStream.writeObject(mAndroidMapList);
-                                                          fileOutputStream.close();
-                                                          objectOutputStream.close();
-                                                      } catch (IOException e1) {
-                                                          e1.printStackTrace();
-                                                      }
-                                                  }
-                                              } catch (IOException | ClassNotFoundException e) {
-                                                  e.printStackTrace();
-                                              }
+                        FileOutputStream fileOutputStream = null;
+                        //if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            try {
+                                fileOutputStream = openFileOutput(fileName, MODE_PRIVATE);
+                                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                                objectOutputStream.writeObject(mAndroidMapList);
+                                fileOutputStream.close();
+                                objectOutputStream.close();
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        //}
+                    } catch (IOException | ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
 
 
 

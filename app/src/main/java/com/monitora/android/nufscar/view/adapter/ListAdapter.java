@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.monitora.android.nufscar.R;
 import com.monitora.android.nufscar.model.News;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class ListAdapter extends BaseAdapter {
 
-    private List<News> mAndroidMapList;
+    private List<News> mAndroidMapList = new ArrayList<>();
 
     public ListAdapter(List<News> mAndroidMapList) {
         this.mAndroidMapList = mAndroidMapList;
