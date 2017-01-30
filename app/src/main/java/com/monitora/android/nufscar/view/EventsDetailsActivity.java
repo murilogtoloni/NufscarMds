@@ -9,15 +9,12 @@ import com.monitora.android.nufscar.R;
 import com.monitora.android.nufscar.model.Eventos;
 import com.monitora.android.nufscar.view.fragment.EventsFragment;
 
-import org.w3c.dom.Text;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-//IMPORTS CALENDÁRIO
 import android.content.Intent;
 import android.provider.CalendarContract;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.View;
-import java.util.Calendar;
 import android.provider.CalendarContract.Events;
 
 
@@ -45,24 +42,43 @@ public class EventsDetailsActivity extends AppCompatActivity {
     }
 
     public void onAddEventClicked(View view){
+
+        long lnsTime=0, lneTime;
+
+        Date dateObject;
+
+        Bundle extras = getIntent().getExtras();
+        Eventos event = (Eventos) extras.getSerializable(EventsFragment.KEY_IDEVENTO);
+
         Intent intent = new Intent(Intent.ACTION_INSERT);
         intent.setType("vnd.android.cursor.item/event");
+        try {
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-        Calendar cal = Calendar.getInstance();
-        long startTime = cal.getTimeInMillis();
-        long endTime = cal.getTimeInMillis()  + 60 * 60 * 1000;
+            String dob_var = event.getData();
 
-        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
-        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endTime);
+            dateObject = formatter.parse(dob_var);
+
+            lnsTime = dateObject.getTime();
+            //Log.e(null, Long.toString(lnsTime));
+        }
+        catch (java.text.ParseException e)
+        {
+            e.printStackTrace();
+            //Log.i("E11111111111", e.toString());
+        }
+
+        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, lnsTime);
+//        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endCal.getTimeInMillis());
         intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
 
-        intent.putExtra(Events.TITLE, "Meu evento criado");
-        intent.putExtra(Events.DESCRIPTION,  "Descrição simples do meu evento");
-        intent.putExtra(Events.EVENT_LOCATION, "Departamento computação");
+        intent.putExtra(Events.TITLE, event.getTitulo());
+        intent.putExtra(Events.DESCRIPTION,  event.getTexto());
+        intent.putExtra(Events.EVENT_LOCATION, event.getLocal().substring(7));
         intent.putExtra(Events.RRULE, "FREQ=YEARLY");
+        intent.putExtra(Events.VISIBLE, 1);
 
         startActivity(intent);
     }
-
-
+    
 }
